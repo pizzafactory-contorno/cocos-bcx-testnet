@@ -1,0 +1,12 @@
+#!/bin/bash
+set -eu
+
+VERSION=${DOCKER_TAG//-*}
+
+if [ "$DOCKERFILE_PATH" = "" ]; then
+    DOCKERFILE_PATH_ARG=""
+else
+    DOCKERFILE_PATH_ARG="-f $DOCKERFILE_PATH"
+fi
+
+docker build --build-arg VERSION=${VERSION} ${DOCKERFILE_PATH_ARG} -t $IMAGE_NAME .
