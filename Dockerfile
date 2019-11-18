@@ -46,4 +46,6 @@ COPY --from=extractor /cli_wallet /witness_node /genesis.json /chainID.log /conf
 ADD entrypoint.sh /
 USER user
 
+EXPOSE 8060 8090
+
 CMD [ "/witness_node" ]
