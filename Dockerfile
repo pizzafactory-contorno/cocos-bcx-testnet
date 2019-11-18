@@ -41,13 +41,9 @@ RUN apt-get update && \
       openssl \
       libreadline-dev \
       libcurl4-openssl-dev \
-      libboost-all-dev && \
-    for i in COCOS_BCX_DATABASE witness_node_data_dir; do mkdir /$i; chgrp 0 /$i; chmod g+rws /$i; done
+      libboost-all-dev
 COPY --from=extractor /cli_wallet /witness_node /genesis.json /chainID.log /config.ini /
 ADD entrypoint.sh /
 USER user
-
-VOLUME /COCOS_BCX_DATABASE
-VOLUME /witness_node_data_dir
 
 CMD [ "/witness_node" ]
