@@ -1,4 +1,4 @@
-FROM ubuntu:16.04 AS extractor
+FROM ubuntu:18.04 AS extractor
 
 ARG VERSION=0.7.16
 
