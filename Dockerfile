@@ -32,9 +32,8 @@ RUN cp /*_*_*/config.ini /
 FROM pizzafactory0contorno/piatto:ubuntu-16.04
 
 USER root
-RUN apt-get update
-#&& \
-RUN    apt-get install -y \
+RUN apt-get update && \
+    apt-get install -y \
       libbz2-dev \
       libdb++-dev \
       libdb-dev \
@@ -42,8 +41,8 @@ RUN    apt-get install -y \
       openssl \
       libreadline-dev \
       libcurl4-openssl-dev \
-      libboost-all-dev
-RUN for i in COCOS_BCX_DATABASE witness_node_data_dir; do mkdir /$i; chgrp 0 /$i; chmod g+rws /$i; done
+      libboost-all-dev && \
+    for i in COCOS_BCX_DATABASE witness_node_data_dir; do mkdir /$i; chgrp 0 /$i; chmod g+rws /$i; done
 COPY --from=extractor /cli_wallet /witness_node /genesis.json /chainID.log /config.ini /
 ADD entrypoint.sh /
 USER user
