@@ -29,7 +29,7 @@ RUN nohup /witness_node --genesis-json /genesis.json >& tmp.log & \
 RUN cp /*_*_*/config.ini /
 
 
-FROM pizzafactory0contorno/piatto:ubuntu-16.04
+FROM pizzafactory0contorno/piatto:ubuntu-18.04
 
 USER root
 RUN apt-get update && \
