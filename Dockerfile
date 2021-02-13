@@ -1,4 +1,4 @@
-FROM ubuntu:16.04 AS extractor
+FROM ubuntu:20.04 AS extractor
 
 ARG VERSION=0.7.16
 
@@ -14,7 +14,7 @@ RUN tar xzf cli_wallet.tar.gz
 RUN md5sum -c sha256checksum
 RUN cp cli_wallet /cli_wallet && chmod 755 /cli_wallet
 
-WORKDIR /cocos-bcx-node-bin/fullnode/testnet/$VERSION/linux/
+WORKDIR /cocos-bcx-node-bin/fullnode/testnet/v$VERSION/linux/
 RUN tar xzf witness_node.tar.gz
 RUN md5sum -c sha256checksum
 RUN cp witness_node ../config/genesis.json / && chmod 755 /witness_node
